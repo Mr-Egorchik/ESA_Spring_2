@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New weapon</title>
+</head>
+<body>
+<form th:method="post" th:object="${weapon}" th:action="@{/weapons/create_weapon}">
+    <label>
+        Name
+        <input th:field="*{name}" required>
+    </label>
+    <label>
+        Attack
+        <input th:field="*{attack}" type="number" required>
+    </label>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+</body>
+</html>

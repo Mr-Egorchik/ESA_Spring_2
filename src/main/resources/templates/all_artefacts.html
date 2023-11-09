@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Artefacts</title>
+</head>
+<body>
+<h1>Artefacts</h1>
+<a th:href="@{/artefacts/create_artefact}">New artefact</a>
+<table>
+  <thead>
+  <tr>
+    <td>#</td>
+    <td>Name</td>
+    <td>Bonus</td>
+    <td>Update</td>
+    <td>Delete</td>
+  </tr>
+  </thead>
+  <tbody>
+    <tr th:each="a, idx: ${artefacts}">
+      <td th:utext="${idx.index}+1"></td>
+      <td th:utext="${a.name}"></td>
+      <td th:text="|${a.bonus.bonusValue} ${a.bonus.bonusType}|"></td>
+      <td>
+        <form th:action="@{/artefacts/update/{id}(id=${a.id})}" th:method="get">
+          <button type="submit"> Update </button>
+        </form>
+      </td>
+      <td>
+        <form th:action="@{/artefacts/delete/{id}(id=${a.id})}" th:method="delete">
+          <button type="submit"> Delete </button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

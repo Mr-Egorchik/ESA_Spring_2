@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weapons</title>
+</head>
+<body>
+<h1>Weapons</h1>
+<a th:href="@{/weapons/create_weapon}">New weapon</a>
+<table>
+  <thead>
+  <tr>
+    <td>#</td>
+    <td>Name</td>
+    <td>Attack</td>
+    <td>Update</td>
+    <td>Delete</td>
+  </tr>
+  </thead>
+  <tbody>
+    <tr th:each="w, idx: ${weapons}">
+      <td th:utext="${idx.index}+1"></td>
+      <td th:utext="${w.name}"></td>
+      <td th:utext="${w.attack}"></td>
+      <td>
+        <form th:action="@{/weapons/update/{id}(id=${w.id})}" th:method="get">
+          <button type="submit"> Update </button>
+        </form>
+      </td>
+      <td>
+        <form th:action="@{/weapons/delete/{id}(id=${w.id})}" th:method="delete">
+          <button type="submit"> Delete </button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

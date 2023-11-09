@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>New bonus</title>
+</head>
+<body>
+<form th:method="post" th:object="${bonus}" th:action="@{/bonuses/create_bonus}">
+    <label>
+        Type
+        <select th:field="*{bonusType}" required>
+            <option th:each="t : ${T(com.example.esa_spring.entity.BonusType).values()}" th:text="${t}" th:value="${t}"></option>
+        </select>
+    </label>
+    <label>
+        Value
+        <input type="number" th:field="*{bonusValue}" required>
+    </label>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

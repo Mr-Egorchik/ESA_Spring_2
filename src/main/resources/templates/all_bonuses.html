@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bonuses</title>
+</head>
+<body>
+<h1>Bonuses</h1>
+<a th:href="@{/bonuses/create_bonus}">New bonus</a>
+<table>
+    <thead>
+    <tr>
+        <td>#</td>
+        <td>Type</td>
+        <td>Value</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="b, idx: ${bonuses}">
+            <td th:utext="${idx.index}+1"></td>
+            <td th:utext="${b.bonusType}"></td>
+            <td th:utext="${b.bonusValue}"></td>
+            <td>
+                <form th:action="@{/bonuses/update/{id}(id=${b.id})}" th:method="get">
+                    <button type="submit"> Update </button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/bonuses/delete/{id}(id=${b.id})}" th:method="delete">
+                    <button type="submit"> Delete </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

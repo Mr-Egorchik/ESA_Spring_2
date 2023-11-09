@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Characters</title>
+</head>
+<body>
+<h1>Characters</h1>
+<a th:href="@{/characters/create_character}">New character</a>
+<table>
+    <thead>
+    <tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>HP</td>
+        <td>Attack</td>
+        <td>Defence</td>
+        <td>Experience</td>
+        <td>Weapon</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="ch, idx: ${characters}">
+            <td th:utext="${idx.index}+1"></td>
+            <td th:utext="${ch.name}"></td>
+            <td th:utext="${ch.hp}"></td>
+            <td th:utext="${ch.attack}"></td>
+            <td th:utext="${ch.defence}"></td>
+            <td th:utext="${ch.experience}"></td>
+            <td th:utext="${ch.weapon.name}"></td>
+            <td>
+                <form th:action="@{/characters/update/{id}(id=${ch.id})}" th:method="get">
+                    <button type="submit"> Update </button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/characters/delete/{id}(id=${ch.id})}" th:method="delete">
+                    <button type="submit"> Delete </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

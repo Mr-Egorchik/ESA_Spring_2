@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Character</title>
+</head>
+<body>
+<form th:method="put" th:object="${character}" th:action="@{/characters/update/{id}(id=${character.id})}">
+  <label>
+    Name
+    <input th:field="*{name}" required>
+  </label>
+  <label>
+    HP
+    <input th:field="*{hp}" type="number" required>
+  </label>
+  <label>
+    Attack
+    <input th:field="*{attack}" type="number" required>
+  </label>
+  <label>
+    Defence
+    <input th:field="*{defence}" type="number" required>
+  </label>
+  <label>
+    Experience
+    <input th:field="*{experience}" type="number" required>
+  </label>
+  <label>
+    Weapon
+    <select th:field="*{weapon.id}">
+      <option value="">
+        -No weapon-
+      </option>
+      <option th:each="w: ${weapons}" th:text="${w.name}" th:value="${w.id}">
+        ${w.name}
+      </option>
+    </select>
+  </label>
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+
+</body>
+</html>

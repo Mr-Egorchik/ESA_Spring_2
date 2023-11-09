@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New artefact</title>
+</head>
+<body>
+<form th:method="post" th:object="${artefact}" th:action="@{/artefacts/create_artefact}">
+  <label>
+    Name
+    <input th:field="*{name}" required>
+  </label>
+  <label>
+    Bonus
+    <select th:field="*{bonus.id}" required>
+      <option th:each="b: ${bonuses}" th:value="${b.id}" th:text="|+${b.bonusValue} ${b.bonusType}|"></option>
+    </select>
+  </label>
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update bonus</title>
+</head>
+<body>
+Bonus
+<p th:text="|+ ${bonus.bonusValue} ${bonus.bonusType}|"></p>
+<p>New values</p>
+<form th:method="put" th:object="${bonus}" th:action="@{/bonuses/update/{id}(id=${bonus.id})}">
+  <label>
+    Type
+    <select th:field="*{bonusType}" required>
+      <option th:each="t : ${T(com.example.esa_spring.entity.BonusType).values()}" th:text="${t}" th:value="${t}"></option>
+    </select>
+  </label>
+  <label>
+    Value
+    <input type="number" th:field="*{bonusValue}" required>
+  </label>
+  <button type="submit">Save</button>
+</form>
+</body>
+</html>
