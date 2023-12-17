@@ -38,4 +38,15 @@ public class Character extends BaseEntity {
     @JoinColumn(name="weapon_id")
     private Weapon weapon;
 
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", hp=" + hp +
+                ", attack=" + attack +
+                ", defence=" + defence +
+                ", experience=" + experience +
+                ", weapon=" + weapon +
+                '}';
+    }
 }

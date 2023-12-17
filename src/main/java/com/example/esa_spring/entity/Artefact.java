@@ -25,4 +25,12 @@ public class Artefact extends BaseEntity {
     @JoinColumn(name="character_id")
     private Character owner;
 
+    @Override
+    public String toString() {
+        return "Artefact{" +
+                "name='" + name + '\'' +
+                ", bonus=" + bonus +
+                ", owner=" + owner +
+                '}';
+    }
 }

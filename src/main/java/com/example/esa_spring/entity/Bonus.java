@@ -28,4 +28,12 @@ public class Bonus extends BaseEntity {
     @OneToMany(mappedBy = "bonus")
     private List<Artefact> artefacts;
 
+    @Override
+    public String toString() {
+        return "Bonus{" +
+                "bonusType=" + bonusType +
+                ", bonusValue=" + bonusValue +
+                ", artefacts=" + artefacts +
+                '}';
+    }
 }

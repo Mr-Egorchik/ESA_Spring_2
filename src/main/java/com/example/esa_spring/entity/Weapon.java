@@ -26,4 +26,12 @@ public class Weapon extends BaseEntity {
     @OneToOne(mappedBy = "weapon")
     private Character owner;
 
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                "name='" + name + '\'' +
+                ", attack=" + attack +
+                ", owner=" + owner +
+                '}';
+    }
 }
